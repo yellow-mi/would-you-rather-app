@@ -1,11 +1,31 @@
 import Home from './Home';
+import { connect } from 'react-redux'
+import { handleInitialData } from '../actions/shared'
+import React, { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <Home />
-    </div>
-  );
+class App extends Component {
+  componentDidMount() {
+    this.props.dispatch(handleInitialData())
+  }
+  
+  render() {
+
+    return (
+      <div className="App">
+        {this.props.loading === true
+        ? null
+        : <Home />
+        }
+      </div>
+    );
+  }
 }
 
-export default App;
+function mapStateToProps ({ authedUser }) {
+  return {
+    loading: authedUser === null
+  }
+}
+
+
+export default connect(mapStateToProps)(App);
