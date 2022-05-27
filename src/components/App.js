@@ -14,8 +14,7 @@ class App extends Component {
       <div className="App">
         {this.props.loading === true
         ? null
-        : <Home />
-        }
+        : <Home /> }
       </div>
     );
   }
