@@ -13,12 +13,21 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Home />
+          {this.props.loading === true 
+          ? null 
+          : <Home />
+          }
         </div>
       </Router>
     );
   }
 }
 
+function mapStateToProps( {authedUser }) {
+  return {
+    loading: authedUser === null
+  }
+}
 
-export default connect()(App);
+
+export default connect(mapStateToProps)(App);

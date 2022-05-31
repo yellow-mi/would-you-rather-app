@@ -5,18 +5,24 @@ class Home extends Component {
     render() {
         return (
             <div className="center">
-                <h3 className="center">List of questions</h3>
+                <h3 className="center">Let's play:</h3>
                 <ul className="dashboard-list">
-                    <li>
-                    Would you rather go To Thailand or Mexico?
-                    </li>
-                    <li>
-                    Would you rather eat a Mango or Papaya?
-                    </li>
+                    {this.props.questionsId.map((id) => (
+                        <li key={id}>
+                            <Question id={id} />
+                        </li>
+                    ))}
                 </ul>
             </div>
         )
     }
 }
 
-export default connect()(Home)
+function mapStateToProps({ questions }) {
+    return {
+        questionsId: Object.keys(questions)
+            .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
+    }
+}
+
+export default connect(mapStateToProps)(Home)
