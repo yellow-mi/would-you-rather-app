@@ -17,7 +17,12 @@ class Question extends Component {
                 <img
                     src={avatarURL}
                     alt={`Avatar of ${name}`}
-                />    
+                />
+
+            <div className="question-info">
+                <span>{name}</span>
+                <div></div>
+            </div>    
             </div>
         )
     }
