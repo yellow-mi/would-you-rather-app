@@ -6,6 +6,10 @@ class Home extends Component {
         return (
             <div className="center">
                 <h3 className="center">Let's play:</h3>
+                <div>
+                    <button>ANSWERED</button>
+                    <button>UNANSWERED</button>
+                </div>
                 <ul className="dashboard-list">
                     {this.props.questionsId.map((id) => (
                         <li key={id}>

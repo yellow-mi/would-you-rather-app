@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 class Question extends Component {
     render() {
         const { question } = this.props
@@ -13,17 +14,16 @@ class Question extends Component {
         } = question
 
         return(
-            <div className="question">
+            <Link to={ `/question/${id}` } className="question">
                 <img
                     src={avatarURL}
-                    alt={`Avatar of ${name}`}
+                    alt={`Avatar of ${author}`}
                 />
-
+            <div>Question made by {author}</div>
             <div className="question-info">
                 <span>{name}</span>
-                <div></div>
             </div>    
-            </div>
+            </Link>
         )
     }
 }
@@ -33,6 +33,7 @@ function mapStateToProps({ authedUser, users, questions }, { id }) {
     
     return {
         authedUser,
+        questions,
         question: question ? question : null,
         users
     }
