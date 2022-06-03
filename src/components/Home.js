@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import Question from './Question'
+import Dashboard from "./Dashboard";
 import React, { Component } from "react";
 class Home extends Component {
     render() {
@@ -10,23 +10,10 @@ class Home extends Component {
                     <button>ANSWERED</button>
                     <button>UNANSWERED</button>
                 </div>
-                <ul className="dashboard-list">
-                    {this.props.questionsId.map((id) => (
-                        <li key={id}>
-                            <Question id={id} />
-                        </li>
-                    ))}
-                </ul>
+               <Dashboard />
             </div>
         )
     }
 }
 
-function mapStateToProps({ questions }) {
-    return {
-        questionsId: Object.keys(questions)
-            .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
-    }
-}
-
-export default connect(mapStateToProps)(Home)
+export default connect()(Home)
