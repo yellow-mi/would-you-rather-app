@@ -15,13 +15,13 @@ class App extends Component {
       <Router>
         <Fragment>
           <div className='container'>
-            <Nav />
-              <div className="App">
-                {this.props.loading === true 
-                ? null 
-                : <Home />}
-              </div>
-          </div>
+          <Nav />
+            <div className="App">
+              {this.props.loading === true 
+              ? null 
+              : <Home />}
+            </div>
+        </div>
         </Fragment>
       </Router>
     );

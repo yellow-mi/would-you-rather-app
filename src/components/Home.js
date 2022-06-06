@@ -10,6 +10,8 @@ class Home extends Component {
                     <button>ANSWERED</button>
                     <button>UNANSWERED</button>
                 </div>
+                <div className="page">
+                </div>
                <Dashboard />
             </div>
         )
