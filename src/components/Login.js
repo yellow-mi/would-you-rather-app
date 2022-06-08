@@ -9,13 +9,15 @@ class Login extends Component {
   }
 
   render() {
+    const userIds = Object.keys(this.props.users)
+    
     return(
       <div className="login">
         <form>
         <h3>Welcome to the Would You Rather App!</h3>
         <h5>Please sign in to continue</h5>
-        <select>
-          {this.props.userId.map(user => (
+        <select onChange={this.handleLogin}>
+          {userIds.map(user => (
                   <option value={user}>
                     {user}
                   </option>
@@ -30,7 +32,7 @@ class Login extends Component {
 
 function mapStateToProps({ users }) {
   return {
-    usersId: Object.keys(users)
+    users,
   }
 }
 
