@@ -15,7 +15,7 @@ class Home extends Component {
     
     render() {
         const { showList } = this.state
-        const { answered, unanswered } = this.props
+        const { userQuestionData } = this.props
         
         return (
             <div className="center">
@@ -23,8 +23,8 @@ class Home extends Component {
                 <div className="page">
                     <ul>
                         {
-                            showList === 'unanswered' ? unanswered.map(question => <Question key={question.id} />)
-                         : answered.map(question => <Question key={question.id} />)
+                            showList === 'unanswered' ? userQuestionData.unanswered.map(question => <Question key={question.id} />)
+                         : userQuestionData.answered.map(question => <Question key={question.id} />)
                         } 
                     </ul>
                     <button onClick={this.handleList}>ANSWERED</button>
