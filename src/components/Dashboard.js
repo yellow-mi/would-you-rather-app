@@ -3,6 +3,12 @@ import { connect } from "react-redux";
 import Question from "./Question";
 
 class Dashboard extends Component {
+  getQuestionsForSelectedType = () => {
+    const { questionType } = this.props
+    const { authedUser } = this.props
+    // filtra dalle question
+  }
+
   render() {
     return (
       <ul className="dashboard-list">
@@ -16,10 +22,11 @@ class Dashboard extends Component {
   }
 }
 
-function mapStateToProps({ questions }) {
+function mapStateToProps({ authedUser, questions }) {
   return {
-      questionsId: Object.keys(questions)
-          .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
+    authedUser,
+    questionsId: Object.keys(questions)
+        .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
   }
 }
 
