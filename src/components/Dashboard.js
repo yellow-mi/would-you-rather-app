@@ -13,7 +13,7 @@ class Dashboard extends Component {
 
   render() {
     const { authedUser, userQuestionData } = this.props
-    const { questionType } = this.props.state
+    const { selectedQuestionType } = this.props
     return (
       // <ul className="dashboard-list">
       //   {this.props.questionsId.map((id) => (
@@ -24,7 +24,7 @@ class Dashboard extends Component {
       // </ul>
       <ul className="dashboard-list">
         {
-          questionType 
+          selectedQuestionType 
           ? userQuestionData.answered.map(question => (
             <li key={question.id}>
               <Question id={question.id} />

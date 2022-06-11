@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 import Dashboard from "./Dashboard";
 import React, { Component } from "react";
-import Question from "./Question";
 class Home extends Component {
   state = {
     showList: "unanswered",
