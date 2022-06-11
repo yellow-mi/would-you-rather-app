@@ -32,8 +32,8 @@ class Home extends Component {
   };
 
   render() {
-    const { showList } = this.state;
-    const { userQuestionData } = this.props;
+    // const { showList } = this.state;
+    // const { userQuestionData } = this.props;
 
     return (
       <div className="center">
@@ -68,21 +68,21 @@ class Home extends Component {
   }
 }
 
-function mapStateToProps({ authedUser, questions, users }) {
-  const answeredIds = Object.keys(users[authedUser].answers);
-  const answered = Object.values(questions).filter((question) =>
-    answeredIds.includes(question.id)
-  );
-  const unanswered = Object.values(questions)
-    .filter((question) => !answeredIds.includes(question.id))
-    .sort((a, b) => b.timestamp - a.timestamp);
+// function mapStateToProps({ authedUser, questions, users }) {
+//   const answeredIds = Object.keys(users[authedUser].answers);
+//   const answered = Object.values(questions).filter((question) =>
+//     answeredIds.includes(question.id)
+//   );
+//   const unanswered = Object.values(questions)
+//     .filter((question) => !answeredIds.includes(question.id))
+//     .sort((a, b) => b.timestamp - a.timestamp);
 
-  return {
-    userQuestionData: {
-      answered,
-      unanswered,
-    },
-  };
-}
+//   return {
+//     userQuestionData: {
+//       answered,
+//       unanswered,
+//     },
+//   };
+// }
 
-export default connect(mapStateToProps)(Home);
+export default connect()(Home);
