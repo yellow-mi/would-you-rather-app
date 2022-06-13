@@ -6,17 +6,17 @@ export default function Nav() {
     <nav className="nav">
       <ul>
         <li>
-          <NavLink to='/' exact activeClassName='active'>
+          <NavLink to='/' activeclassname='active'>
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink to='/leaderboard' activeClassName='active'>
+          <NavLink to='/leaderboard' activeclassname='active'>
             Leaderboard
           </NavLink>
         </li>
         <li>
-          <NavLink to='/add-question' activeClassName='active'>
+          <NavLink to='/add-question' activeclassname='active'>
             Add question
           </NavLink>
         </li>
