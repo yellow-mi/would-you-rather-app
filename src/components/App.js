@@ -18,7 +18,7 @@ class App extends Component {
         <Fragment>
         <div className='container'>
             <Nav />
-            {this.props.loading === true
+            {/* {this.props.loading === true
               ? null
               : <div className="page">
               <Routes>
@@ -26,7 +26,9 @@ class App extends Component {
                 <Route path='/login' element={<Login />} />
                 <Route path='/add-question' element={<NewQuestion />} />
               </Routes>
-              </div>}
+              </div>} */}
+        <NewQuestion />
+        <Login />
           </div>
         </Fragment>
       </Router>

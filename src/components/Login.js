@@ -9,7 +9,7 @@ class Login extends Component {
   }
 
   render() {
-    const userIds = Object.keys(this.props.users)
+    const { userIds } = this.props
     
     return(
       <div className="login">
@@ -33,6 +33,7 @@ class Login extends Component {
 function mapStateToProps({ users }) {
   return {
     users,
+    userIds: Object.keys(users),
   }
 }
 
