@@ -13,24 +13,30 @@ class App extends Component {
   }
   
   render() {
+    const { authedUser } = this.props
+
     return (
       <Router>
-        <Fragment>
-        <div className='container'>
+          <div className="page">
+            {authedUser === null 
+              ? (
+                // <div className='container'>  </div>
+                <Routes>
+                  <Route path='/' element={<Login />} />
+                </Routes>
+              )
+              : (
+           <Fragment>
             <Nav />
-            {/* {this.props.loading === true
-              ? null
-              : <div className="page">
               <Routes>
                 <Route path='/' exact element={<Home />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/add-question' element={<NewQuestion />} />
               </Routes>
-              </div>} */}
-        <NewQuestion />
-        <Login />
+            </Fragment>
+              )
+            }
           </div>
-        </Fragment>
       </Router>
     );
   }
@@ -38,7 +44,7 @@ class App extends Component {
 
 function mapStateToProps({ authedUser }) {
   return {
-    loading: authedUser === null
+    authedUser
   }
 }
 

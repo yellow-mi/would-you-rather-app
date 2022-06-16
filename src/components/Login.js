@@ -18,7 +18,7 @@ class Login extends Component {
         <h5>Please sign in to continue</h5>
         <select onChange={this.handleLogin}>
           {userIds.map(user => (
-                  <option value={user}>
+                  <option key={user.id} value={user}>
                     {user}
                   </option>
           ))}

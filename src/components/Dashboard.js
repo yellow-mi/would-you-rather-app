@@ -12,7 +12,7 @@ class Dashboard extends Component {
 
 
   render() {
-    const { questionType, userQuestionData } = this.props
+    const { questionType, answeredQuestionIds, unansweredQuestionIds } = this.props
 
     return (
       // <ul className="dashboard-list">
@@ -25,12 +25,12 @@ class Dashboard extends Component {
       <ul className="dashboard-list">
         {
           questionType === 'answered'
-          ? userQuestionData.answered.map(question => (
+          ? answeredQuestionIds.map(question => (
             <li key={question.id}>
               <Question id={question.id} />
             </li>
           )) 
-          : userQuestionData.unanswered.map(question => (
+          : unansweredQuestionIds.map(question => (
             <li key={question.id}>
               <Question id={question.id} />
             </li>
@@ -49,22 +49,20 @@ class Dashboard extends Component {
 //   }
 // }
 
-function mapStateToProps({ authedUser, questions, users }, props) {
-    const answeredIds = Object.keys(users[authedUser].answers);
-    const answered = Object.values(questions).filter((question) =>
-      answeredIds.includes(question.id)
-    );
-    const unanswered = Object.values(questions)
-      .filter((question) => !answeredIds.includes(question.id))
-      .sort((a, b) => b.timestamp - a.timestamp);
-  
+function mapStateToProps({ authedUser, questions, users }) {
+  // answered question ids  
+  let answeredQuestionIds = authedUser ? Object.keys(users[authedUser].answers) : null
+  answeredQuestionIds = answeredQuestionIds ? 
+    answeredQuestionIds.sort((a, b) => questions[b].timestamp - questions[a].timestamp) : null
+  // unanswered question ids
+  let unansweredQuestionIds = authedUser ? Object.keys(questions).filter((question) => {
+    return !answeredQuestionIds.includes(question)
+  }) : null
+  unansweredQuestionIds = unansweredQuestionIds ? unansweredQuestionIds.sort((a, b) => questions[b].timestamp - questions[a].timestamp) : null
     return {
-      // questionsId: Object.keys(questions)
-      //   .sort((a, b) => questions[b].timestamp - questions[a].timestamp),
-      userQuestionData: {
-        answered,
-        unanswered,
-      },
+      answeredQuestionIds,
+      unansweredQuestionIds,
+      authedUser
     };
   }
 
