@@ -1,40 +1,48 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { setAuthedUser } from '../actions/authedUser'
+import { setAuthedUser } from "../actions/authedUser";
 
 class Login extends Component {
-  handleLogin = (id) => {
-    const { dispatch } = this.props
-    dispatch(setAuthedUser(id))
+  state ={
+    option: ''
   }
+  handleChange = (e) => {
+    const value = e.target.value
+    this.setState(() => ({
+      option: value
+    }))
+  }
+  
+  handleLogin = (e) => {
+    e.preventDefault()
+    const { dispatch } = this.props;
+    const { option } = this.state
+    
+    option !== '' && dispatch(setAuthedUser(e))
+    
+    this.setState(() => ({
+      option: ''
+    }))
+  };
 
   render() {
-    const { userIds } = this.props
-    
-    return(
+
+    return (
       <div className="login">
-        <form>
         <h3>Welcome to the Would You Rather App!</h3>
         <h5>Please sign in to continue</h5>
-        <select onChange={this.handleLogin}>
-          {userIds.map(user => (
-                  <option key={user.id} value={user}>
-                    {user}
-                  </option>
-          ))}
-        </select>
-        <button type="submit">Log in</button>
-      </form>  
+        <form onSubmit={this.handleLogin}>
+          <select onChange={this.handleChange}>
+            <option value="">Select a user...</option>
+            <option value="sarahedo">Sarah Edo</option>
+            <option value="tylermcginnis">Tyler McGinnis</option>
+            <option value="johndoe">John Doe</option>
+          </select>
+          <button type="submit">Log in</button>
+        </form>
       </div>
-    )
+    );
   }
 }
 
-function mapStateToProps({ users }) {
-  return {
-    users,
-    userIds: Object.keys(users),
-  }
-}
-
-export default connect(mapStateToProps)(Login)
+export default connect()(Login);
