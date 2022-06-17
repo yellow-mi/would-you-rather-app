@@ -9,10 +9,9 @@ class Dashboard extends Component {
   //   // filtra dalle questions
   // }
 
-
-
   render() {
-    const { questionType, answeredQuestionIds, unansweredQuestionIds } = this.props
+    const { questionType, answeredQuestionIds, unansweredQuestionIds } =
+      this.props;
 
     return (
       // <ul className="dashboard-list">
@@ -23,47 +22,49 @@ class Dashboard extends Component {
       //   ))}
       // </ul>
       <ul className="dashboard-list">
-        {
-          questionType === 'answered'
-          ? answeredQuestionIds.map(question => (
-            <li key={question.id}>
-              <Question id={question.id} />
-            </li>
-          )) 
-          : unansweredQuestionIds.map(question => (
-            <li key={question.id}>
-              <Question id={question.id} />
-            </li>
-          )) 
-        }
+        {questionType === "answered"
+          ? answeredQuestionIds.map((question) => (
+              <li key={question.id}>
+                <Question id={question.id} />
+              </li>
+            ))
+          : unansweredQuestionIds.map((question) => (
+              <li key={question.id}>
+                <Question id={question.id} />
+              </li>
+            ))}
       </ul>
-    )
+    );
   }
 }
 
-// function mapStateToProps({ authedUser, questions }) {
-//   return {
-//     authedUser,
-//     questionsId: Object.keys(questions)
-//         .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
-//   }
-// }
-
 function mapStateToProps({ authedUser, questions, users }) {
-  // answered question ids  
-  let answeredQuestionIds = authedUser ? Object.keys(users[authedUser].answers) : null
-  answeredQuestionIds = answeredQuestionIds ? 
-    answeredQuestionIds.sort((a, b) => questions[b].timestamp - questions[a].timestamp) : null
+  // answered question ids
+  let answeredQuestionIds = authedUser
+    ? Object.keys(users[authedUser].answers)
+    : null;
+  answeredQuestionIds = answeredQuestionIds
+    ? answeredQuestionIds.sort(
+        (a, b) => questions[b].timestamp - questions[a].timestamp
+      )
+    : null;
   // unanswered question ids
-  let unansweredQuestionIds = authedUser ? Object.keys(questions).filter((question) => {
-    return !answeredQuestionIds.includes(question)
-  }) : null
-  unansweredQuestionIds = unansweredQuestionIds ? unansweredQuestionIds.sort((a, b) => questions[b].timestamp - questions[a].timestamp) : null
-    return {
-      answeredQuestionIds,
-      unansweredQuestionIds,
-      authedUser
-    };
-  }
+  let unansweredQuestionIds = authedUser
+    ? Object.keys(questions).filter((question) => {
+        return !answeredQuestionIds.includes(question);
+      })
+    : null;
+  unansweredQuestionIds = unansweredQuestionIds
+    ? unansweredQuestionIds.sort(
+        (a, b) => questions[b].timestamp - questions[a].timestamp
+      )
+    : null;
 
-export default connect(mapStateToProps)(Dashboard)
+  return {
+    answeredQuestionIds,
+    unansweredQuestionIds,
+    authedUser,
+  };
+}
+
+export default connect(mapStateToProps)(Dashboard);
