@@ -17,7 +17,7 @@ class App extends Component {
 
     return (
       <Router>
-          <div className="page">
+          <div className="container">
             {authedUser === null 
               ? (
                 // <div className='container'>  </div>

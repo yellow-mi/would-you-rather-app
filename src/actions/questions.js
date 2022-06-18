@@ -11,10 +11,10 @@ export function receiveQuestions(questions) {
         questions,
     }
 }
-export function addAnswerToQuestion(authUser, qid, answer) {
+export function addAnswerToQuestion(authedUser, qid, answer) {
     return {
       type: ADD_ANSWER_TO_QUESTION,
-      authUser,
+      authedUser,
       qid,
       answer
     };
@@ -28,7 +28,7 @@ export function addAnswerToQuestion(authUser, qid, answer) {
   }
   
   export function handleSaveQuestion(optionOneText, optionTwoText, author) {
-    return dispatch => {
+    return (dispatch) => {
       return saveQuestion({ optionOneText, optionTwoText, author }).then(
         question => {
           dispatch(addQuestion(question));
