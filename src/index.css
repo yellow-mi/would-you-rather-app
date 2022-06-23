@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -11,21 +16,21 @@ a {
 }
 
 .container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+  padding-bottom: 50px;
 }
 
 .btn {
-  text-transform: uppercase;
-  margin: 35px auto;
-  padding: 10px;
-  border: 1px solid rgba(0,0,0,.29);
-  cursor: pointer;
-  background: #fff;
-  font-size: 16px;
   width: 250px;
-  position: relative;
+  background-color: coral;
+  padding: 2%;
+  border-radius: 12px;
+  font-weight: 600;
+  outline: none;
+  margin-top: 20px;
 }
 
 .btn:hover {
@@ -155,4 +160,49 @@ li {
   margin-top: 10px;
   font-size: 20px;
   color: #C3392A;
+}
+
+.question-card {
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 2px solid black;
+    margin: 2%;
+}
+
+.question-preview {
+  padding: 2%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.avatar {
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar img{
+    width:70%;
+    border-radius: 50%;
+    margin-top: auto;
+}
+
+.question-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 450px;
+}
+
+.author-quest {
+  margin-bottom: 10px;
+  text-align: left;
+  padding: 2%;
+}
+.label-question {
+  margin-right: 10px;
 }

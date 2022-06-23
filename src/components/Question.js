@@ -9,17 +9,27 @@ class Question extends Component {
       return <p>This question doesn't exist</p>;
     }
 
-    const { id, author, timestamp, optionOne, optionTwo, name, avatarURL } =
-      question;
+    const { id, author, optionOne, optionTwo } = question;
+    const { avatarURL, name } = this.props.user;
 
     return (
-      <Link to={`/question/${id}`} className="question">
-        <img src={avatarURL} alt={`Avatar of ${author}`} />
-        <div>Question made by {author}</div>
-        <div className="question-info">
-          <span>{name}</span>
+      <div className="question-card">
+        <div className="question-preview">
+          <div className="avatar">
+            <img src={avatarURL} alt={`Avatar of ${author}`} />
+          </div>
+            <div className="question-info">
+              <h3 className="author-quest">{name} asks:</h3>
+              <h4>Would you rather</h4>
+              <h5>{`... ${optionOne.text}`}</h5>
+              <h4>Or</h4>
+              <h5>{`... ${optionTwo.text}`}</h5>
+              <Link to={`/question/${id}`} className="question">
+                <button className="btn">View question</button>
+              </Link>
+          </div>
         </div>
-      </Link>
+      </div>
     );
   }
 }
@@ -31,7 +41,7 @@ function mapStateToProps({ authedUser, users, questions }, { id }) {
     authedUser,
     questions,
     question: question ? question : null,
-    users,
+    user: users[question.author],
   };
 }
 export default connect(mapStateToProps)(Question);

@@ -47,7 +47,7 @@ class Home extends Component {
               checked={this.isSelected("answered")}
               onChange={this.onQuestionTypeChange}
             />
-            <label htmlFor="answered">ANSWERED</label>
+            <label className="label-question" htmlFor="answered">ANSWERED</label>
             <input
               type="radio"
               id="unanswered"
