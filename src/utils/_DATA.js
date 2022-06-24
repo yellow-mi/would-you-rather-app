@@ -24,7 +24,7 @@ let users = {
     johndoe: {
       id: 'johndoe',
       name: 'John Doe',
-      avatarURL: 'https://www.w3schools.com/w3images/avatar6.png',
+      avatarURL: 'https://www.shareicon.net/data/512x512/2016/07/26/802043_man_512x512.png',
       answers: {
         "xj352vofupe1dqz9emx13r": 'optionOne',
         "vthrdm985a262al8qx3do": 'optionTwo',

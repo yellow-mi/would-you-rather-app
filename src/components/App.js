@@ -6,6 +6,7 @@ import React, { Component, Fragment } from 'react';
 import { handleInitialData } from '../actions/shared'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import NewQuestion from './NewQuestion';
+import QuestionPage from './QuestionPage';
 
 class App extends Component {
   componentDidMount() {
@@ -31,6 +32,7 @@ class App extends Component {
               <Routes>
                 <Route path='/' exact element={<Home />} />
                 <Route path='/login' element={<Login />} />
+                <Route path='/question/:id' element={<QuestionPage />} />
                 <Route path='/add-question' element={<NewQuestion />} />
               </Routes>
             </Fragment>

@@ -15,6 +15,11 @@ a {
   color: #252525;
 }
 
+h4,
+h5 {
+  margin-bottom: 7px;
+}
+
 .container {
   display: block;
   margin-left: auto;
@@ -85,8 +90,6 @@ li {
   padding: 10px;
   display: flex;
   margin: 0 auto;
-  border: 1px solid #dad7d7;
-  border-radius: 3px;
   cursor: pointer;
 }
 
@@ -168,6 +171,7 @@ li {
     justify-content: space-between;
     border: 2px solid black;
     margin: 2%;
+    background-color: #add8e6;
 }
 
 .question-preview {
@@ -199,10 +203,9 @@ li {
 }
 
 .author-quest {
-  margin-bottom: 10px;
-  text-align: left;
-  padding: 2%;
+  margin-bottom: 8px;
 }
+
 .label-question {
   margin-right: 10px;
 }
