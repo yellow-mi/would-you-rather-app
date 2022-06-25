@@ -29,7 +29,9 @@ class QuestionPage extends Component {
   }
 }
 
-function mapStateToProps({ authedUser, questions, users }) {
+function mapStateToProps({ authedUser, questions, users }, props) {
+  const id = props.match.params.id
+  console.log("id:", id)
   return {
     authedUser,
     questions,
