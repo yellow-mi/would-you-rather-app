@@ -3,12 +3,38 @@ import { connect } from "react-redux";
 
 class QuestionPage extends Component {
   render() {
-    return(
-      <div>
-        <h5>Something</h5>
+    
+    return (
+      <div className="question-card">
+        <h3>Asked by {}</h3>
+        <form className="question-info">
+          <h4>Would you rather</h4>
+          <div>
+            <input 
+              type='radio'
+              value='optionOne'
+            />
+            <label htmlFor="optionOne">option one: {}</label>
+          </div>
+          <div>
+            <input 
+              type='radio'
+              value='optionTwo'
+            />
+            <label htmlFor="optionTwo">option two</label>
+          </div>
+        </form>
       </div>
     )
   }
 }
 
-export default connect()(QuestionPage)
+function mapStateToProps({ authedUser, questions, users }) {
+  return {
+    authedUser,
+    questions,
+    users
+  }
+}
+
+export default connect(mapStateToProps)(QuestionPage)

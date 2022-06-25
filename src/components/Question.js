@@ -18,15 +18,15 @@ class Question extends Component {
           <div className="avatar">
             <img src={avatarURL} alt={`Avatar of ${author}`} />
           </div>
-            <div className="question-info">
-              <h3 className="author-quest">{name} asks:</h3>
-              <h4>Would you rather</h4>
-              <h5>{`... ${optionOne.text}`}</h5>
-              <h4>Or</h4>
-              <h5>{`... ${optionTwo.text}`}</h5>
-              <Link to={`/question/${id}`} className="question">
-                <button className="btn">View question</button>
-              </Link>
+          <div className="question-info">
+            <h3 className="author-quest">{name} asks:</h3>
+            <h4>Would you rather</h4>
+            <h5>{`... ${optionOne.text}`}</h5>
+            <h4>Or</h4>
+            <h5>{`... ${optionTwo.text}`}</h5>
+            <Link to={`/question/${id}`} className="question">
+              <button className="btn">View question</button>
+            </Link>
           </div>
         </div>
       </div>

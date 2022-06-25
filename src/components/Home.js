@@ -31,8 +31,6 @@ class Home extends Component {
   };
 
   render() {
-    // const { showList } = this.state;
-    // const { userQuestionData } = this.props;
 
     return (
       <div className="center">
@@ -58,8 +56,6 @@ class Home extends Component {
             />
             <label htmlFor="unanswered">UNANSWERED</label>
           </form>
-          {/* <button onClick={this.handleList}>ANSWERED</button>
-                    <button onClick={this.handleList}>UNANSWERED</button> */}
         </div>
         <Dashboard questionType={this.state.selectedQuestionType} />
       </div>
