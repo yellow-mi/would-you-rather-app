@@ -26,7 +26,6 @@ class Home extends Component {
   };
 
   isSelected = (name) => {
-    console.log(name);
     return name === this.state.selectedQuestionType;
   };
 
