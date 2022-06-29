@@ -1,14 +1,30 @@
 import React, { Component } from "react";
-import { connect } from "react-redux"
+import { connect } from "react-redux";
 
 class QuestionResults extends Component {
   render() {
+    const { question } = this.props;
+    const optionOne = question.optionOne.text;
+    const optionTwo = question.optionTwo.text;
+
     return (
-      <div>
-        Ciao, vediamo i risultati della poll
+      <div className="question-info">
+        <h2>Results</h2>
+        <p>Would you rather {optionOne}</p>
+        <p>Would you rather {optionTwo}</p>
       </div>
-    )
+    );
   }
 }
 
-export default connect()(QuestionResults)
+function mapStateToProps( {authedUser, questions, users}, props ) {
+  const { id } = props.match.params
+  const question = questions[id];
+
+  return {
+    question: question ? question : null
+  }
+
+}
+
+export default connect(mapStateToProps)(QuestionResults);

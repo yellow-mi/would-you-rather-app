@@ -10,7 +10,7 @@ class Home extends Component {
     unanswered: {
       selected: false,
     },
-    selectedQuestionType: "answered",
+    selectedQuestionType: "unanswered",
   };
 
   handleList = (e) => {
