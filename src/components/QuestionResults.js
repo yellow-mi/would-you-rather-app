@@ -3,28 +3,29 @@ import { connect } from "react-redux";
 
 class QuestionResults extends Component {
   render() {
-    const { question } = this.props;
-    const optionOne = question.optionOne.text;
-    const optionTwo = question.optionTwo.text;
+    const { question } = this.props
+    // const { optionOne, optionTwo } = question
 
     return (
       <div className="question-info">
         <h2>Results</h2>
-        <p>Would you rather {optionOne}</p>
-        <p>Would you rather {optionTwo}</p>
+        <p>Something</p>
       </div>
     );
   }
 }
 
-function mapStateToProps( {authedUser, questions, users}, props ) {
-  const { id } = props.match.params
+function mapStateToProps({ authedUser, questions, users }, { id }) {
+  // const id = props.match.params.question_id;
   const question = questions[id];
 
   return {
-    question: question ? question : null
-  }
-
+    authedUser,
+    id,
+    question,
+    questions,
+    users,
+  };
 }
 
 export default connect(mapStateToProps)(QuestionResults);

@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addAnswerToUser } from "../actions/users";
 import { addAnswerToQuestion } from "../actions/questions";
-import { Link } from "react-router-dom";
-
+import QuestionResults from "./QuestionResults";
+import { withRouter } from "react-router-dom";
 class QuestionPage extends Component {
   state = {
     selectedOption: "optionOne",
@@ -26,41 +26,51 @@ class QuestionPage extends Component {
     e.preventDefault();
     dispatch(addAnswerToUser(authedUser, qid, answer));
     dispatch(addAnswerToQuestion(authedUser, qid, answer));
+    this.props.history.push(`/question-results/${qid}`);
   };
 
   render() {
     const { avatarURL, name } = this.props.user;
-    const { question } = this.props;
-    const { id } = question;
-    const optionOne = question.optionOne.text;
-    const optionTwo = question.optionTwo.text;
+    const { authedUser, question } = this.props;
+    const { id, optionOne, optionTwo } = question;
 
-    return (
-      <div className="question-card">
-      {/* <div className="avatar">
+    if (
+      optionOne.votes.includes(authedUser) ||
+      optionTwo.votes.includes(authedUser)
+    ) {
+      return (
+        <QuestionResults
+          question={question}
+          authedUser={authedUser}
+          id={this.props.question.id}
+        />
+      );
+    } else {
+      return (
+        <div className="question-card">
+          {/* <div className="avatar">
       <img src={avatarURL} alt={`Avatar of ${name}`} />
       </div> */}
-        <form className="question-info">
-          <h3>{name} asks, would you rather...</h3>
-          <div>
-            <input
-              checked={this.isSelected("optionOne")}
-              onChange={this.onOptionTypeChange}
-              type="radio"
-              value="optionOne"
-            />
-            <label htmlFor="optionOne">{optionOne}</label>
-          </div>
-          <div>
-            <input
-              checked={this.isSelected("optionTwo")}
-              onChange={this.onOptionTypeChange}
-              type="radio"
-              value="optionTwo"
-            />
-            <label htmlFor="optionTwo">{optionTwo}</label>
-          </div>
-          <Link to={`/question-results/question${id}`}>
+          <form className="question-info">
+            <h3>{name} asks, would you rather...</h3>
+            <div>
+              <input
+                checked={this.isSelected("optionOne")}
+                onChange={this.onOptionTypeChange}
+                type="radio"
+                value="optionOne"
+              />
+              <label htmlFor="optionOne">{optionOne.text}</label>
+            </div>
+            <div>
+              <input
+                checked={this.isSelected("optionTwo")}
+                onChange={this.onOptionTypeChange}
+                type="radio"
+                value="optionTwo"
+              />
+              <label htmlFor="optionTwo">{optionTwo.text}</label>
+            </div>
             <button
               className="btn"
               onClick={this.handleSaveAnswer}
@@ -68,16 +78,15 @@ class QuestionPage extends Component {
             >
               Submit
             </button>
-          </Link>
-        </form>
-      </div>
-    );
+          </form>
+        </div>
+      );
+    }
   }
 }
 
 function mapStateToProps({ authedUser, questions, users }, props) {
   const id = props.match.params.id;
-  // console.log("id:", id)
   const question = questions[id];
 
   return {
@@ -90,4 +99,4 @@ function mapStateToProps({ authedUser, questions, users }, props) {
   };
 }
 
-export default connect(mapStateToProps)(QuestionPage);
+export default withRouter(connect(mapStateToProps)(QuestionPage));
