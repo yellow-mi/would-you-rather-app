@@ -29,9 +29,17 @@ function addQuestion(question) {
   };
 }
 
-export function handleSaveQuestion(optionOneText, optionTwoText, author) {
-  return (dispatch) => {
-    return saveQuestion({ optionOneText, optionTwoText, author }).then(
+export function handleSaveQuestion(optionOneText, optionTwoText) {
+  return (dispatch, getState) => {
+    const { authedUser } = getState()
+
+    const info = {
+      optionOneText,
+      optionTwoText,
+      author: authedUser
+    }
+    
+    return saveQuestion(info).then(
       (question) => {
         dispatch(addQuestion(question));
         dispatch(addQuestionToUser(question));

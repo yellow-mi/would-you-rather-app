@@ -1,5 +1,6 @@
 import {
   ADD_ANSWER_TO_QUESTION,
+  ADD_QUESTION,
   RECEIVE_QUESTIONS,
 } from "../actions/questions";
 
@@ -23,6 +24,11 @@ export default function questions(state = {}, action) {
           },
         },
       };
+      case ADD_QUESTION:
+        return {
+          ...state,
+          [action.question.id]: action.questions
+        }
     default:
       return state;
   }
