@@ -42,7 +42,7 @@ class NewQuestion extends Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <h3>Create New Question</h3>
-          <p>Complete the question:</p>
+          <p>Complete the form to add a new question:</p>
           <h4>Would you rather...</h4>
           <input 
             onChange={this.onChangeA}
