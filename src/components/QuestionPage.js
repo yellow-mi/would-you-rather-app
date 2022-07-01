@@ -31,7 +31,7 @@ class QuestionPage extends Component {
 
   render() {
     const { avatarURL, name } = this.props.user;
-    const { authedUser, question } = this.props;
+    const { authedUser, question, user } = this.props;
     const { id, optionOne, optionTwo } = question;
 
     if (
@@ -40,9 +40,10 @@ class QuestionPage extends Component {
     ) {
       return (
         <QuestionResults
-          question={question}
-          authedUser={authedUser}
-          id={this.props.question.id}
+        authedUser={authedUser}
+        id={this.props.question.id}
+        question={question}
+        user={user}
         />
       );
     } else {
