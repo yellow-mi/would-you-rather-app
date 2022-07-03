@@ -5,8 +5,6 @@ class Leaderboard extends Component {
   render() {
     const { users } = this.props;
 
-    console.log(`Users are: `, users);
-
     return (
       <div className="center">
         {users.map((user, index) => (
