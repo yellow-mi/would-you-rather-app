@@ -4,8 +4,9 @@ import { connect } from "react-redux";
 class QuestionResults extends Component {
   render() {
     const { authedUser, question, user } = this.props;
-    const optionOneVotes = question.optionOne.votes.length;
-    const optionTwoVotes = question.optionTwo.votes.length;
+    const { optionOne, optionTwo } = question
+    const optionOneVotes = optionOne.votes.length;
+    const optionTwoVotes = optionTwo.votes.length;
     const { name } = user;
 
     const totalVotes = optionOneVotes + optionTwoVotes;
@@ -14,8 +15,8 @@ class QuestionResults extends Component {
     const optionTwoPercentage = (optionTwoVotes / totalVotes) * 100;
 
     function userHasAnswered(question, authedUser) {
-      const optionOneSelected = question.optionOne.votes.includes(authedUser);
-      const optionTwoSelected = question.optionTwo.votes.includes(authedUser);
+      const optionOneSelected = optionOne.votes.includes(authedUser);
+      const optionTwoSelected = optionTwo.votes.includes(authedUser);
       if (optionOneSelected || optionTwoSelected) {
         return true;
       }
@@ -29,7 +30,6 @@ class QuestionResults extends Component {
           <div className="question-card">
             <div className="question-info">
               <p>Would you rather {question.optionOne.text}</p>
-              {/* <p>{optionOnePercentage}% on Total votes</p> */}
               <div className="progress">
                 <div style={{ width: `${optionOnePercentage}%` }}>
                   {optionOnePercentage > 0 ? `${optionOnePercentage}%` : ""}
@@ -44,7 +44,6 @@ class QuestionResults extends Component {
           <div className="question-card">
             <div className="question-info">
               <p>Would you rather {question.optionTwo.text}</p>
-              {/* <p>{optionTwoPercentage}% on Total votes</p> */}
               <div className="progress">
                 <div style={{ width: `${optionTwoPercentage}%` }}>
                   {optionTwoPercentage > 0 ? `${optionTwoPercentage}%` : ""}
@@ -63,4 +62,16 @@ class QuestionResults extends Component {
   }
 }
 
-export default connect()(QuestionResults);
+function mapStateToProps({ authedUser, users, questions }, { id }) {
+  const question = questions[id]
+
+  const { author } = question
+
+  return {
+    authedUser,
+    question,
+    user: users[author]
+  }
+}
+
+export default connect(mapStateToProps)(QuestionResults);

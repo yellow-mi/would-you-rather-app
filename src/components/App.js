@@ -31,7 +31,13 @@ class App extends Component {
               <Route path="/login" component={Login} />
               <Route path="/add-question" component={NewQuestion} />
               <Route path="/question/:id" component={QuestionPage} />
-              <Route path="/question-results/:question_id" component={QuestionResults} />
+              {/* <Route path="/question-results/:question_id" component={QuestionResults} /> */}
+              <Route
+                path="/question-results/:question_id"
+                render={({ match }) => (
+                  <QuestionResults id={match.params.question_id} />
+                )}
+              />
             </Fragment>
           )}
         </div>

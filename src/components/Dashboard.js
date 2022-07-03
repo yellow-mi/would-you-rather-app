@@ -27,7 +27,7 @@ function mapStateToProps({ authedUser, questions, users }) {
     : null;
   answeredQuestionIds = answeredQuestionIds
     ? answeredQuestionIds.sort(
-        (a, b) => questions[b].timestamp - questions[a].timestamp
+        (a, b) => b.timestamp - a.timestamp
       )
     : null;
   // unanswered question ids
@@ -35,7 +35,7 @@ function mapStateToProps({ authedUser, questions, users }) {
         return !answeredQuestionIds.includes(question);
       }) : null;
   unansweredQuestionIds = unansweredQuestionIds
-    ? unansweredQuestionIds.sort((a, b) => questions[b].timestamp - questions[a].timestamp)
+    ? unansweredQuestionIds.sort((a, b) => b.timestamp - a.timestamp)
     : null;
 
   return {

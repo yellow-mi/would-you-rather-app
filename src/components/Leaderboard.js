@@ -6,19 +6,21 @@ class Leaderboard extends Component {
     const { users } = this.props;
 
     return (
-      <div className="center">
+      <ul className="center">
         {users.map((user, index) => (
-          <div>
-            <div className="avatar">
-              <img src={user.avatarURL} alt={user.name} />
+          <li key={index}>
+            <div className="question-card">
+              <div className="avatar">
+                <img src={user.avatarURL} alt={user.name} />
+              </div>
+              <h4>{user.name}</h4>
+              <p>Answered questions: {user.answersCount}</p>
+              <p>Questions created: {user.questionsCount}</p>
+              <p>Score: {user.score}</p>
             </div>
-            <h4>{user.name}</h4>
-            <p>Answered questions: {user.answersCount}</p>
-            <p>Questions created: {user.questionsCount}</p>
-            <p>Score: {user.score}</p>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     );
   }
 }
