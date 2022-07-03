@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import NewQuestion from "./NewQuestion";
 import QuestionPage from "./QuestionPage";
 import QuestionResults from "./QuestionResults";
+import Leaderboard from "./Leaderboard";
 
 class App extends Component {
   componentDidMount() {
@@ -26,10 +27,11 @@ class App extends Component {
             <Fragment>
               <Nav />
               <Route path="/" exact component={Home} />
+              <Route path="/leaderboard" exact component={Leaderboard} />
               <Route path="/login" component={Login} />
+              <Route path="/add-question" component={NewQuestion} />
               <Route path="/question/:id" component={QuestionPage} />
               <Route path="/question-results/:question_id" component={QuestionResults} />
-              <Route path="/add-question" component={NewQuestion} />
             </Fragment>
           )}
         </div>

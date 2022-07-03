@@ -29,7 +29,12 @@ class QuestionResults extends Component {
           <div className="question-card">
             <div className="question-info">
               <p>Would you rather {question.optionOne.text}</p>
-              <p>{optionOnePercentage}% on Total votes</p>
+              {/* <p>{optionOnePercentage}% on Total votes</p> */}
+              <div className="progress">
+                <div style={{ width: `${optionOnePercentage}%` }}>
+                  {optionOnePercentage > 0 ? `${optionOnePercentage}%` : ""}
+                </div>
+              </div>
               <p>
                 ({optionOneVotes} out of {totalVotes} votes)
               </p>
@@ -39,7 +44,12 @@ class QuestionResults extends Component {
           <div className="question-card">
             <div className="question-info">
               <p>Would you rather {question.optionTwo.text}</p>
-              <p>{optionTwoPercentage}% on Total votes</p>
+              {/* <p>{optionTwoPercentage}% on Total votes</p> */}
+              <div className="progress">
+                <div style={{ width: `${optionTwoPercentage}%` }}>
+                  {optionTwoPercentage > 0 ? `${optionTwoPercentage}%` : ""}
+                </div>
+              </div>
               <p>
                 ({optionTwoVotes} out of {totalVotes} votes)
               </p>
