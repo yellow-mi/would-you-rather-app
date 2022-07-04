@@ -5,32 +5,30 @@ class Question extends Component {
   render() {
     const { question } = this.props;
 
-    if (question === null) {
-      return <p>This question doesn't exist</p>;
-    }
+    if (question) {
+      const { id, author, optionOne, optionTwo } = question;
+      const { avatarURL, name } = this.props.user;
 
-    const { id, author, optionOne, optionTwo } = question;
-    const { avatarURL, name } = this.props.user;
-
-    return (
-      <div className="question-card">
-        <div className="question-preview">
-          <div className="avatar">
-            <img src={avatarURL} alt={`Avatar of ${author}`} />
-          </div>
-          <div className="question-info">
-            <h3 className="author-quest">{name} asks:</h3>
-            <h4>Would you rather</h4>
-            <h5>{`... ${optionOne.text}`}</h5>
-            <h4>Or</h4>
-            <h5>{`... ${optionTwo.text}`}</h5>
-            <Link to={`/question/${id}`} className="question">
-              <button className="btn">View question</button>
-            </Link>
+      return (
+        <div className="question-card">
+          <div className="question-preview">
+            <div className="avatar">
+              <img src={avatarURL} alt={`Avatar of ${author}`} />
+            </div>
+            <div className="question-info">
+              <h3 className="author-quest">{name} asks:</h3>
+              <h4>Would you rather</h4>
+              <h5>{`... ${optionOne.text}`}</h5>
+              <h4>Or</h4>
+              <h5>{`... ${optionTwo.text}`}</h5>
+              <Link to={`/question/${id}`} className="question">
+                <button className="btn">View question</button>
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 
@@ -41,7 +39,9 @@ function mapStateToProps({ authedUser, users, questions }, { id }) {
     authedUser,
     questions,
     question: question ? question : null,
-    user: users[question.author],
+    user: question ? users[question.author] : null
+    // question: question || null,
+    // user: users[question?.author] || null,
   };
 }
 export default connect(mapStateToProps)(Question);

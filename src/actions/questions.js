@@ -41,6 +41,7 @@ export function handleSaveQuestion(optionOneText, optionTwoText) {
     
     return saveQuestion(info).then(
       (question) => {
+        console.log('question:', question)
         dispatch(addQuestion(question));
         dispatch(addQuestionToUser(question));
       }

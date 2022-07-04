@@ -13,7 +13,6 @@ export default function questions(state = {}, action) {
       };
     case ADD_ANSWER_TO_QUESTION:
       const { authedUser, qid, answer } = action.question;
-      console.log("qid: ", qid);
       return {
         ...state,
         [qid]: {
@@ -25,9 +24,12 @@ export default function questions(state = {}, action) {
         },
       };
       case ADD_QUESTION:
+        // const { question, question: { id } } = action
+        const { question } = action
+        const { id } = question
         return {
           ...state,
-          [action.question.id]: action.questions
+          [id]: question
         }
     default:
       return state;

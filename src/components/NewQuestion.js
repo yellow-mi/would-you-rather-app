@@ -29,7 +29,7 @@ class NewQuestion extends Component {
     const { authedUser, dispatch } = this.props
     const { optionA, optionB } = this.state
 
-    authedUser && dispatch(handleSaveQuestion(optionA, optionB))
+    authedUser && dispatch(handleSaveQuestion(optionA, optionB, authedUser))
 
     this.setState(() => ({
       redirect: true,
