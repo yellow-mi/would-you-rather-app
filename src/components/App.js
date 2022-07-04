@@ -1,14 +1,15 @@
-import Home from "./Home";
+import React, { Component, Fragment } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
+import { handleInitialData } from "../actions/shared";
+import Home from "./Home";
+import Leaderboard from "./Leaderboard";
 import Login from "./Login";
 import Nav from "./Nav";
-import React, { Component, Fragment } from "react";
-import { handleInitialData } from "../actions/shared";
-import { BrowserRouter as Router, Route } from "react-router-dom";
 import NewQuestion from "./NewQuestion";
+import NotFound from "./NotFound";
 import QuestionPage from "./QuestionPage";
 import QuestionResults from "./QuestionResults";
-import Leaderboard from "./Leaderboard";
 
 class App extends Component {
   componentDidMount() {
@@ -29,8 +30,9 @@ class App extends Component {
               <Route path="/" exact component={Home} />
               <Route path="/leaderboard" exact component={Leaderboard} />
               <Route path="/login" component={Login} />
-              <Route path="/add-question" component={NewQuestion} />
+              <Route path="/add" component={NewQuestion} />
               <Route path="/question/:id" component={QuestionPage} />
+              <Route path="*" component={NotFound} />
               <Route path="/question-results/:question_id" component={QuestionResults} />
               {/* <Route
                 path="/question-results/:question_id"

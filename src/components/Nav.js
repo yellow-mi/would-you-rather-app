@@ -28,7 +28,7 @@ class Nav extends Component {
             </Link>
           </li>
           <li>
-            <Link to="/add-question" activeclassname="active">
+            <Link to="/add" activeclassname="active">
               Add question
             </Link>
           </li>
