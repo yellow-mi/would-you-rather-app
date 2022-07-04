@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 class QuestionResults extends Component {
   render() {
+    console.log("Props are: ", this.props)
     const { authedUser, question, user } = this.props;
     const { optionOne, optionTwo } = question
     const optionOneVotes = optionOne.votes.length;
@@ -15,8 +16,8 @@ class QuestionResults extends Component {
     const optionTwoPercentage = (optionTwoVotes / totalVotes) * 100;
 
     function userHasAnswered(question, authedUser) {
-      const optionOneSelected = optionOne.votes.includes(authedUser);
-      const optionTwoSelected = optionTwo.votes.includes(authedUser);
+      const optionOneSelected = question.optionOne.votes.includes(authedUser);
+      const optionTwoSelected = question.optionTwo.votes.includes(authedUser);
       if (optionOneSelected || optionTwoSelected) {
         return true;
       }
@@ -64,7 +65,6 @@ class QuestionResults extends Component {
 
 function mapStateToProps({ authedUser, users, questions }, { id }) {
   const question = questions[id]
-
   const { author } = question
 
   return {

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { addAnswerToUser } from "../actions/users";
 import { addAnswerToQuestion } from "../actions/questions";
 import QuestionResults from "./QuestionResults";
-import { withRouter } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 class QuestionPage extends Component {
   state = {
     selectedOption: "optionOne",
@@ -26,7 +26,8 @@ class QuestionPage extends Component {
     e.preventDefault();
     dispatch(addAnswerToUser(authedUser, qid, answer));
     dispatch(addAnswerToQuestion(authedUser, qid, answer));
-    this.props.history.push(`/question-results/${qid}`);
+    // this.props.history.push(`/question-results/${qid}`);
+    <Redirect to={{pathname: `/question-results/${qid}`}} />
   };
 
   render() {

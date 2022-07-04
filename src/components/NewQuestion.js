@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleSaveQuestion } from '../actions/questions'
-
+import { Redirect } from "react-router-dom"
 class NewQuestion extends Component {
   state = {
+    redirect: false,
     optionA: '',
     optionB: ''
   }
@@ -25,19 +26,22 @@ class NewQuestion extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
 
-    const { authedUser, dispatch } = this.props
+    const { authedUser, dispatch } = this.props
     const { optionA, optionB } = this.state
 
     authedUser && dispatch(handleSaveQuestion(optionA, optionB))
 
     this.setState(() => ({
+      redirect: true,
       optionA: '',
       optionB: ''
     }))
   }
 
   render() {
-    const { optionA, optionB } = this.state
+    const { redirect, optionA, optionB } = this.state
+    
+    if(redirect) {return (<Redirect to="/" />)} else {
     return(
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -61,6 +65,7 @@ class NewQuestion extends Component {
         </form>
       </div>
     )
+    }
   }
 }
 
