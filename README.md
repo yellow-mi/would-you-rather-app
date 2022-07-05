@@ -1,44 +1,22 @@
-Getting Started with Create React App
-This project was bootstrapped with Create React App.
-
-Available Scripts
-In the project directory, you can run:
-
-npm start
-Runs the app in the development mode.
-Open http://localhost:3000 to view it in your browser.
-
-The page will reload when you make changes.
-You may also see any lint errors in the console.
-
-npm test
-Launches the test runner in the interactive watch mode.
-See the section about running tests for more information.
-
-npm run build
-Builds the app for production to the build folder.
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.
-Your app is ready to be deployed!
-
-See the section about deployment for more information.
-
-npm run eject
-Note: this is a one-way operation. Once you eject, you can't go back!
-
-If you aren't satisfied with the build tool and configuration choices, you can eject at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except eject will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use eject. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 # Would You Rather Project
 
-This is the starter code for the final assessment project for Udacity's React & Redux course.
+This is the code created for the "React Nanodegree" course on Udacity.
 
-The `_DATA.js` file represents a fake database and methods that let you access the data. The only thing you need to edit in the ` _DATA.js` file is the value of `avatarURL`. Each user should have an avatar, so you’ll need to add the path to each user’s avatar.
+The project was created using create-react-app.
 
-Using the provided starter code, you'll build a React/Redux front end for the application. We recommend using the [Create React App](https://github.com/facebook/create-react-app) to bootstrap the project.
+## Installation
+
+yarn install
+
+## Execution
+
+yarn start
+
+The project will be served at the address provided at the shell.
+
+## Node version
+
+Version 15.14.0 was used during the development and testing of the project.
 
 ## Data
 
@@ -80,7 +58,7 @@ Voting options are attached to questions. They include:
 | votes             | Array | A list that contains the id of each user who voted for that option|
 | text                | String | The text of the option |
 
-Your code will talk to the database via 4 methods:
+This code talks to the database via 4 methods:
 
 * `_getUsers()`
 * `_getQuestions()`
@@ -131,4 +109,4 @@ Your code will talk to the database via 4 methods:
 
 ## Contributing
 
-This repository is the starter code for *all* Udacity students. Therefore, we most likely will not accept pull requests. For details, check out [CONTRIBUTING.md](https://github.com/udacity/reactnd-project-would-you-rather-starter/blob/master/CONTRIBUTING.md).
+Pull requests will be accepted starting from the end of December 2021, which is after my final graduation for the course, respecting code of conduct required by the graduation process (honor code, by Udacity).

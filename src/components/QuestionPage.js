@@ -34,11 +34,11 @@ class QuestionPage extends Component {
   render() {
     const { avatarURL, name } = this.props.user;
     const { authedUser, question, user } = this.props;
-    const { id, optionOne, optionTwo } = question;
-    
     if (question === undefined) {
       return (<NotFound />)
   }
+    const { id, optionOne, optionTwo } = question;
+    
 
     if (
       optionOne.votes.includes(authedUser) ||
@@ -101,7 +101,7 @@ function mapStateToProps({ authedUser, questions, users }, props) {
     id,
     question,
     questions,
-    user: users[question.author],
+    user: question ? users[question.author] : '',
     users,
   };
 }
