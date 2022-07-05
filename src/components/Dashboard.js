@@ -28,14 +28,14 @@ function mapStateToProps({ authedUser, questions, users }) {
   answeredQuestionIds = answeredQuestionIds
     ? answeredQuestionIds.sort(
         (a, b) => b.timestamp - a.timestamp
-      )
+      ).reverse()
     : null;
   // unanswered question ids
   let unansweredQuestionIds = authedUser ? Object.keys(questions).filter((question) => {
         return !answeredQuestionIds.includes(question);
       }) : null;
   unansweredQuestionIds = unansweredQuestionIds
-    ? unansweredQuestionIds.sort((a, b) => b.timestamp - a.timestamp)
+    ? unansweredQuestionIds.sort((a, b) => b.timestamp - a.timestamp).reverse()
     : null;
 
   return {

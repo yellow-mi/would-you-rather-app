@@ -33,7 +33,7 @@ class QuestionResults extends Component {
               <p>Would you rather {question.optionOne.text}</p>
               <div className="progress">
                 <div style={{ width: `${optionOnePercentage}%` }}>
-                  {optionOnePercentage > 0 ? `${optionOnePercentage}%` : ""}
+                  {optionOnePercentage > 0 ? `${Math.round(optionOnePercentage)}%` : ""}
                 </div>
               </div>
               <p>
@@ -47,7 +47,7 @@ class QuestionResults extends Component {
               <p>Would you rather {question.optionTwo.text}</p>
               <div className="progress">
                 <div style={{ width: `${optionTwoPercentage}%` }}>
-                  {optionTwoPercentage > 0 ? `${optionTwoPercentage}%` : ""}
+                  {optionTwoPercentage > 0 ? `${Math.round(optionTwoPercentage)}%` : ""}
                 </div>
               </div>
               <p>

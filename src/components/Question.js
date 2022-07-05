@@ -21,7 +21,7 @@ class Question extends Component {
               <h5>{`... ${optionOne.text}`}</h5>
               <h4>Or</h4>
               <h5>{`... ${optionTwo.text}`}</h5>
-              <Link to={`/question/${id}`} className="question">
+              <Link to={`/questions/${id}`} className="question">
                 <button className="btn">View question</button>
               </Link>
             </div>

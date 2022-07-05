@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import Home from "./Home";
@@ -27,12 +27,13 @@ class App extends Component {
           ) : (
             <Fragment>
               <Nav />
+              <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/leaderboard" exact component={Leaderboard} />
               <Route path="/login" component={Login} />
               <Route path="/add" component={NewQuestion} />
-              <Route path="/question/:id" component={QuestionPage} />
-              <Route path="*" component={NotFound} />
+              <Route path="/questions/:id" component={QuestionPage} />
+              <Route component={NotFound} />
               <Route path="/question-results/:question_id" component={QuestionResults} />
               {/* <Route
                 path="/question-results/:question_id"
@@ -40,6 +41,7 @@ class App extends Component {
                   <QuestionResults id={match.params.question_id} />
                 )}
               /> */}
+              </Switch>
             </Fragment>
           )}
         </div>

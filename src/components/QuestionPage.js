@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addAnswerToUser } from "../actions/users";
 import { addAnswerToQuestion } from "../actions/questions";
+import NotFound from "./NotFound"
 import QuestionResults from "./QuestionResults";
 import { Redirect, withRouter } from "react-router-dom";
 class QuestionPage extends Component {
@@ -34,6 +35,10 @@ class QuestionPage extends Component {
     const { avatarURL, name } = this.props.user;
     const { authedUser, question, user } = this.props;
     const { id, optionOne, optionTwo } = question;
+    
+    if (question === undefined) {
+      return (<NotFound />)
+  }
 
     if (
       optionOne.votes.includes(authedUser) ||
