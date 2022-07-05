@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 
 class QuestionResults extends Component {
   render() {
-    console.log("Props are: ", this.props)
     const { authedUser, question, user } = this.props;
     const { optionOne, optionTwo } = question
     const optionOneVotes = optionOne.votes.length;
